@@ -1,0 +1,10 @@
+<script>
+  // parse current url query parameters
+  const params = new URLSearchParams(window.location.search);
+  const product = params.get('product') || 'default_product';
+  const amount = params.get('amount') || '1';
+  
+  const redirectUrl = "https://script.google.com/macros/s/AKfycbySssF3utRflpCcpllpWxGHbfKOko4W-3fFMM0lbZmREuL8SWTQjgVTe9uqQnjT8KXX/exec?amount=" 
+                      + encodeURIComponent(amount) + "&product=" + encodeURIComponent(product);
+  window.location.href = redirectUrl;
+</script>
