@@ -3,7 +3,7 @@
   const params = new URLSearchParams(window.location.search);
   const product = params.get('product') || 'default_product';
   const amount = params.get('amount') || '1';
-  const appscript_url = "https://script.google.com/macros/s/AKfycbwjv-Ee8XqH7Pl7KfoR9GtjFJp4NftSQklh-UG7ORYV44VBislv5E9OwcOK37mOqs0Z/exec"
+  const appscript_url = "https://script.google.com/macros/s/AKfycbyFsijRM_8RUEdpShdP6c4iGS5at0xXbSkcdk9iHoi0At6Af4v1k3tFHxPc7x4sM0oc/exec"
   const redirectUrl = appscript_url + "?amount=" + encodeURIComponent(amount) + "&product=" + encodeURIComponent(product);
   window.location.href = redirectUrl;
 </script>
