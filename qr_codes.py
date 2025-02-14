@@ -106,26 +106,6 @@ def save_codes(product, price, cols=3, rows=4):
         top_text_y = qr_y - item_h - gapy
         draw.text((top_text_x, top_text_y), item_text, fill="black", font=text_font)
 
-    # add bottom label text
-    bottom_text = f"{product} {count} to {count + cols*rows}"
-    small_text_font_size = 30
-    try:
-        small_text_font = ImageFont.truetype("coolvetica/Coolvetica Rg.otf", small_text_font_size)
-    except Exception:
-        small_text_font = ImageFont.load_default()
-
-    # measure bottom text size using textbbox
-    bbox_bottom = draw.textbbox((0, 0), bottom_text, font=small_text_font)
-    bottom_text_w = bbox_bottom[2] - bbox_bottom[0]
-    bottom_text_h = bbox_bottom[3] - bbox_bottom[1]
-
-    # position the text centered horizontally, just above the bottom margin
-    bottom_text_x = (A4_WIDTH - bottom_text_w) // 2
-    bottom_text_y = A4_HEIGHT - MARGIN - bottom_text_h
-
-    draw.text((bottom_text_x, bottom_text_y), bottom_text, fill="black", font=small_text_font)
-
-
     # save the resulting a4 grid as a png file
     page.save(f"printouts/{bottom_text}.png")
     print(f"Saved {bottom_text}")
