@@ -81,7 +81,6 @@ def save_codes(product, price, cols=3, rows=4, from_0=False):
         qr_y = cell_y + (cell_height - qr_size) // 2
         page.paste(qr_img, (qr_x, qr_y))
 
-        # define texts; ditch the arrow and "£" in favor of "GBP" and "scan to pay" to the right.
         price_text = f"£{item['amount']}, scan to pay"
         item_text = item['product']
 
