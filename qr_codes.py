@@ -14,7 +14,7 @@ A4_WIDTH = 2480
 A4_HEIGHT = 3508
 MARGIN = 50  # margin around the grid in pixels
 
-def save_codes(product, price, cols=3, rows=4):
+def save_codes(product, price, cols=3, rows=4, from_0=False):
     cell_width = (A4_WIDTH - 2 * MARGIN) // cols
     cell_height = (A4_HEIGHT - 2 * MARGIN) // rows
     item_count_file = Path(f"item_counts/{product}.txt")
@@ -22,7 +22,8 @@ def save_codes(product, price, cols=3, rows=4):
     count = 0
     if not item_count_file.is_file():
         item_count_file.write_text(str(count))
-    count = int(item_count_file.read_text())
+    if not from_0:
+        count = int(item_count_file.read_text())
     item_count_file.write_text(str(count + cols*rows))
 
     # sample product data; add as many items as needed (max = cols*rows)
@@ -111,9 +112,9 @@ def save_codes(product, price, cols=3, rows=4):
     print(f"Saved {bottom_text}")
 
 if __name__ == "__main__":
-    for _ in range(5):
-        save_codes("crisps_2_pack", "1.00")
-    for _ in range(1):
-        save_codes("custard_creams", "1.00")
-    for _ in range(1):
-        save_codes("digestives", "1.50")
+    for i in range(5):
+        save_codes("crisps_2_pack", "1.00", from_0=(i==0))
+    for i in range(1):
+        save_codes("custard_creams", "1.00", from_0=(i==0))
+    for i in range(1):
+        save_codes("digestives", "1.50", from_0=(i==0))
