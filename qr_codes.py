@@ -18,7 +18,6 @@ def save_codes(product, price, cols=3, rows=4, from_0=False):
     cell_width = (A4_WIDTH - 2 * MARGIN) // cols
     cell_height = (A4_HEIGHT - 2 * MARGIN) // rows
     item_count_file = Path(f"item_counts/{product}.txt")
-    print(item_count_file)
     count = 0
     if not item_count_file.is_file():
         item_count_file.write_text(str(count))
@@ -107,9 +106,9 @@ def save_codes(product, price, cols=3, rows=4, from_0=False):
         top_text_y = qr_y - item_h - gapy
         draw.text((top_text_x, top_text_y), item_text, fill="black", font=text_font)
 
-    # save the resulting a4 grid as a png file
-    page.save(f"printouts/{bottom_text}.png")
-    print(f"Saved {bottom_text}")
+    filename = f"printouts/{product}_{count}_to_{count + cols*rows}.png"
+    page.save(filename)
+    print(f"Saved {filename}")
 
 if __name__ == "__main__":
     for i in range(5):
